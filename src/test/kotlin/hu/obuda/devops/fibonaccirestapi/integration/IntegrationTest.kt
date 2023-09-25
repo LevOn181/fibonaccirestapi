@@ -24,7 +24,19 @@ class IntegrationTest {
 
         // then
         Assertions.assertEquals(HttpStatus.OK, entity.statusCode)
-        Assertions.assertEquals("0", entity.body)
+        Assertions.assertEquals("1", entity.body)
+    }
+
+    @Test
+    fun callFibonacciEndpontNis4(){
+        val entity = restTemplate.getForEntity(
+                "http://localhost:8080/fibonacci?n=4",
+                String::class.java
+        )
+
+        // then
+        Assertions.assertEquals(HttpStatus.OK, entity.statusCode)
+        Assertions.assertEquals("3", entity.body)
     }
 
     @Test
